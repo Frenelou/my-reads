@@ -26,7 +26,7 @@ class MyReads extends Component {
     const {shelves, books} = this.state
     return (<div className="app">
 
-      <Route path='/search' render={({history}) => (<Search toTitlecase={this.toTitlecase} shelves={shelves} updateBookList={this.updateBookList} library={books} fish={() => {
+      <Route path='/search' render={({history}) => (<Search toTitlecase={this.toTitlecase} shelves={shelves} updateBookList={this.updateBookList} library={books} goBack={() => {
             history.push('/')
           }}/>)}/>
 

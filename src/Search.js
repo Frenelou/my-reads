@@ -18,7 +18,7 @@ class Search extends Component {
   }
   render() {
     const {books} = this.state
-    const {toTitlecase, shelves, updateBookList, library, fish} = this.props
+    const {toTitlecase, shelves, updateBookList, library, goBack} = this.props
     return (<div className="search-books">
       <div className="search-books-bar">
 
@@ -33,7 +33,7 @@ class Search extends Component {
 
       <div className="search-books-results">
         <ol className="books-grid">
-          {books.length > 0 && books.map((b, index) => <Book key={b.id} book={b} toTitlecase={toTitlecase} shelves={shelves} updateBookList={updateBookList} library={library} fish={fish}/>)}
+          {books.length > 0 && books.map((b, index) => <Book key={b.id} book={b} toTitlecase={toTitlecase} shelves={shelves} updateBookList={updateBookList} library={library} goBack={goBack}/>)}
         </ol>
       </div>
     </div>)
