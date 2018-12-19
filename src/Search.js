@@ -9,11 +9,11 @@ class Search extends Component {
   }
   search = (event) => {
     if (event.target.value.length < 1) {
-      this.setState(() => ({books: []}))
+      this.setState({books: []})
       return
     }
     BooksAPI.search(event.target.value).then((books) => {
-      this.setState(() => ({books: books}))
+      this.setState({books: books})
     })
   }
   render() {

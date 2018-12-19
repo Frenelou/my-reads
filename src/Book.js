@@ -6,7 +6,7 @@ class Book extends Component {
     BooksAPI.update(this.props.book, e.target.value).then(() => {
       this.props.updateBookList()
     })
-    this.props.fish && this.props.fish()
+    this.props.goBack && this.props.goBack()
   }
   getBooksShelf = () => {
     const {library, book} = this.props
@@ -29,7 +29,10 @@ class Book extends Component {
           <div className="book-cover" style={{
               width: 128,
               height: 193,
-              backgroundImage: 'url("' + book.imageLinks.thumbnail + '")'
+              backgroundImage: 'url("' + (
+                typeof book.imageLinks != "undefined"
+                ? book.imageLinks.thumbnail
+                : '') + '")'
             }}></div>
           <div className="book-shelf-changer">
             <select onChange={this.getNewShelf} value={this.getBooksShelf()}>
