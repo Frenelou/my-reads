@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class Book extends Component {
-  state = {
-    newShelf: ''
-  }
   getNewShelf = (e) => {
     BooksAPI.update(this.props.book, e.target.value).then(() => {
       this.props.updateBookList()
