@@ -5,15 +5,17 @@ import {Link} from 'react-router-dom'
 
 class Search extends Component {
   state = {
-    books: []
+    books: [],
+    searched: ''
   }
   search = (event) => {
+    const searched = event.target.value
     if (event.target.value.length < 1) {
       this.setState({books: []})
       return
     }
-    BooksAPI.search(event.target.value).then((books) => {
-      this.setState({books: books})
+    BooksAPI.search(searched).then((books) => {
+      this.setState({books: books, searched: searched})
     })
   }
   render() {
@@ -34,6 +36,7 @@ class Search extends Component {
       <div className="search-books-results">
         <ol className="books-grid">
           {books.length > 0 && books.map((b, index) => <Book key={b.id} book={b} toTitlecase={toTitlecase} shelves={shelves} updateBookList={updateBookList} library={library} goBack={goBack}/>)}
+          {this.state.searched.length > 0 && <p>No book title contains the word {this.state.searched}</p>}
         </ol>
       </div>
     </div>)
